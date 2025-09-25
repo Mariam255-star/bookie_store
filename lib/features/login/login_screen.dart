@@ -2,6 +2,7 @@ import 'package:bookie_store/core/constants/app_color.dart';
 //import 'package:bookie_store/core/constants/app_images.dart';
 import 'package:bookie_store/core/functions/navigation.dart';
 import 'package:bookie_store/core/utils/text_style.dart';
+import 'package:bookie_store/features/home/home_screen.dart';
 import 'package:bookie_store/features/register/forget_password_screen.dart';
 import 'package:bookie_store/features/register/register_screen.dart';
 import 'package:bookie_store/features/welcome/welcome_screen.dart';
@@ -90,7 +91,9 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    pushTo(context, const HomeScreen());
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.primaryColor,
                     padding: const EdgeInsets.symmetric(vertical: 16),
