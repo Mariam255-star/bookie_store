@@ -1,6 +1,8 @@
 import 'package:bookie_store/core/constants/app_color.dart';
 import 'package:bookie_store/core/functions/navigation.dart';
+import 'package:bookie_store/features/home/cart_screen.dart';
 import 'package:bookie_store/features/home/product_details_screen.dart';
+import 'package:bookie_store/features/home/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -169,6 +171,15 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             _currentIndex = index;
           });
+                    if (index == 1) {
+            pushTo(context, const WishListScreen());
+          } else if (index == 2) {
+            pushTo(context, const CartScreen());
+          //} else if (index == 3) {
+          //  pushTo(context, const ProfileScreen());
+          //}
+        };
+
         },
         selectedItemColor: AppColor.darkColor,
         unselectedItemColor: AppColor.grayColor,
