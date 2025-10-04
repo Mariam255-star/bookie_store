@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true, 
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: AppColor.borderColor,
         elevation: 0,
@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView( 
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(14),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,12 +116,7 @@ class LoginScreen extends StatelessWidget {
                   const Expanded(child: Divider(thickness: 1)),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Text(
-                      'or',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
+                    child: Text('or', style: TextStyle(fontSize: 16)),
                   ),
                   const Expanded(child: Divider(thickness: 1)),
                 ],
@@ -168,9 +163,7 @@ class LoginScreen extends StatelessWidget {
                     },
                     child: Text(
                       'Register Now',
-                      style: TextStyles.bodyStyle(
-                        color: AppColor.primaryColor,
-                      ),
+                      style: TextStyles.bodyStyle(color: AppColor.primaryColor),
                     ),
                   ),
                 ],

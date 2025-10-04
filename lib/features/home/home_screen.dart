@@ -23,14 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: AppColor.formColor,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        ),
-        title: SvgPicture.asset(
-          'assets/images/logo 2.svg',
-          height: 28,
-        ),
+        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+        title: SvgPicture.asset('assets/images/logo 2.svg', height: 28),
         actions: [
           IconButton(
             onPressed: () {},
@@ -85,10 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
                 'Best Seller',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 10),
@@ -129,16 +120,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(height: 8),
                         const Text(
                           'The Republic',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: TextStyle(fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: 4),
                         const Text(
                           '₹285',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: TextStyle(fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: 6),
                         ElevatedButton(
@@ -171,15 +158,15 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             _currentIndex = index;
           });
-                    if (index == 1) {
+          if (index == 1) {
             pushTo(context, const WishListScreen());
           } else if (index == 2) {
             pushTo(context, const CartScreen());
-          //} else if (index == 3) {
-          //  pushTo(context, const ProfileScreen());
-          //}
-        };
-
+            //} else if (index == 3) {
+            //  pushTo(context, const ProfileScreen());
+            //}
+          }
+          ;
         },
         selectedItemColor: AppColor.darkColor,
         unselectedItemColor: AppColor.grayColor,
@@ -192,24 +179,27 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             label: '',
           ),
-           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/save icon.svg',
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/save icon.svg',
               height: 24,
               width: 24,
             ),
             label: '',
           ),
-           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/Category.svg',
-             height: 24,
-             width: 24,
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/Category.svg',
+              height: 24,
+              width: 24,
             ),
             label: '',
           ),
-           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/Profile.svg',
-             height: 24,
-             width: 24,
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/Profile.svg',
+              height: 24,
+              width: 24,
             ),
             label: '',
           ),

@@ -15,11 +15,7 @@ class OtpVerificationScreen extends StatelessWidget {
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
-      textStyle: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
-      
-      ),
+      textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
       decoration: BoxDecoration(
         border: Border.all(color: AppColor.borderColor),
         borderRadius: BorderRadius.circular(8),
@@ -54,10 +50,7 @@ class OtpVerificationScreen extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 'Enter the verification code we just sent on\nyour email address.',
-                style: TextStyles.bodyStyle(
-                  fontSize: 14,
-             
-                ),
+                style: TextStyles.bodyStyle(fontSize: 14),
               ),
               const SizedBox(height: 24),
 
@@ -79,7 +72,6 @@ class OtpVerificationScreen extends StatelessWidget {
               ),
               const SizedBox(height: 32),
 
-          
               SizedBox(
                 width: double.infinity,
                 height: 48,
@@ -91,13 +83,13 @@ class OtpVerificationScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                  pushTo(context, const CreateNewPasswordScreen());
+                    pushTo(context, const CreateNewPasswordScreen());
                   },
                   child: Text(
                     "Verify",
                     style: TextStyles.bodyStyle(
                       fontSize: 16,
-                
+
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -105,22 +97,16 @@ class OtpVerificationScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
-       
               Center(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       "Didn’t receive code? ",
-                      style: TextStyles.bodyStyle(
-                        fontSize: 13,
-                     
-                      ),
+                      style: TextStyles.bodyStyle(fontSize: 13),
                     ),
                     GestureDetector(
-                      onTap: () {
-                       
-                      },
+                      onTap: () {},
                       child: Text(
                         "Resend",
                         style: TextStyles.bodyStyle(
@@ -132,7 +118,7 @@ class OtpVerificationScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

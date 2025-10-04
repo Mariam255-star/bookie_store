@@ -133,10 +133,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   child: Text(
                     'Register',
-                    style: TextStyle(
-                      color: AppColor.borderColor,
-                      fontSize: 16,
-                    ),
+                    style: TextStyle(color: AppColor.borderColor, fontSize: 16),
                   ),
                 ),
               ),
@@ -150,9 +147,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     onTap: () {},
                     child: Text(
                       'Login Now',
-                      style: TextStyle(
-                        color: AppColor.primaryColor,
-                      ),
+                      style: TextStyle(color: AppColor.primaryColor),
                     ),
                   ),
                 ],

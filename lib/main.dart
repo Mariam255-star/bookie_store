@@ -13,13 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-       theme: ThemeData(
-        fontFamily: "DMSerifDisplay",
-        ),
+      theme: ThemeData(fontFamily: "DMSerifDisplay"),
       home: SplashScreen(),
-     // home: const ,
+      // home: const ,
     );
   }
 }
-
-

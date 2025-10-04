@@ -14,29 +14,20 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-        
           SizedBox.expand(
-            child: Image.asset(
-              'assets/images/welcome.png',
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset('assets/images/welcome.png', fit: BoxFit.cover),
           ),
 
-         
           SafeArea(
             child: Column(
               children: [
                 const Spacer(flex: 2),
 
-                
                 SvgPicture.asset(AppImages.logoSvg, height: 80),
                 const SizedBox(height: 16),
                 const Text(
                   'Order Your Book Now!',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
                 ),
 
                 const Spacer(flex: 3),
@@ -54,7 +45,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                     pushTo(context, const LoginScreen());
+                      pushTo(context, const LoginScreen());
                     },
                     child: const Text("Login"),
                   ),
@@ -66,7 +57,7 @@ class WelcomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.white, 
+                      backgroundColor: Colors.white,
                       side: BorderSide(color: AppColor.primaryColor),
                       minimumSize: const Size(double.infinity, 48),
                       shape: RoundedRectangleBorder(
@@ -74,7 +65,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                    pushTo(context, const RegisterScreen());
+                      pushTo(context, const RegisterScreen());
                     },
                     child: Text(
                       "Register",
