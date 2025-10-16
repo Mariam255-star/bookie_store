@@ -5,6 +5,9 @@ import 'package:bookie_store/features/home/product_details_screen.dart';
 import 'package:bookie_store/features/home/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_controller.dart' as slider; // 👈 هنا الحل
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +18,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
+  int _activeIndex = 0;
+
+  final slider.CarouselSliderController _carouselController =
+      slider.CarouselSliderController(); // 👈 استخدمنا alias هنا
+
+  final List<String> _sliderImages = [
+    'assets/images/books.png',
+    'assets/images/product image.png',
+    'assets/images/books.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,38 +53,45 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 180,
-              child: PageView(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      'assets/images/books.png',
-                      fit: BoxFit.cover,
-                    ),
+            CarouselSlider.builder(
+              itemCount: _sliderImages.length,
+              carouselController: _carouselController,
+              itemBuilder: (context, index, realIndex) {
+                final imagePath = _sliderImages[index];
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    imagePath,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
                   ),
-                ],
+                );
+              },
+              options: CarouselOptions(
+                height: 180,
+                autoPlay: true,
+                enlargeCenterPage: true,
+                viewportFraction: 0.9,
+                onPageChanged: (index, reason) {
+                  setState(() => _activeIndex = index);
+                },
               ),
             ),
             const SizedBox(height: 8),
-            GestureDetector(
-              onTap: () {
-                pushTo(context, const ProductDetailsScreen());
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 12,
-                    height: 6,
-                    margin: const EdgeInsets.symmetric(horizontal: 3),
-                    decoration: BoxDecoration(
-                      color: AppColor.cardColor,
-                      borderRadius: BorderRadius.circular(3),
-                    ),
-                  ),
-                ],
+            Center(
+              child: AnimatedSmoothIndicator(
+                activeIndex: _activeIndex,
+                count: _sliderImages.length,
+                effect: ExpandingDotsEffect(
+                  activeDotColor: AppColor.darkColor,
+                  dotColor: AppColor.cardColor,
+                  dotHeight: 6,
+                  dotWidth: 12,
+                  expansionFactor: 3,
+                ),
+                onDotClicked: (index) {
+                  _carouselController.jumpToPage(index);
+                },
               ),
             ),
             const SizedBox(height: 15),
@@ -93,55 +113,61 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisSpacing: 12,
                 childAspectRatio: 0.65,
                 children: List.generate(4, (index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: AppColor.cardColor,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.1),
-                          blurRadius: 4,
-                          spreadRadius: 1,
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(12),
+                  return GestureDetector(
+                    onTap: () {
+                      pushTo(context, const ProductDetailsScreen());
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColor.cardColor,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            blurRadius: 4,
+                            spreadRadius: 1,
                           ),
-                          child: Image.asset(
-                            'assets/images/product image.png',
-                            height: 150,
-                            width: double.infinity,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        const Text(
-                          'The Republic',
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 4),
-                        const Text(
-                          '₹285',
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 6),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColor.darkColor,
-                            foregroundColor: AppColor.formColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(12),
+                            ),
+                            child: Image.asset(
+                              'assets/images/product image.png',
+                              height: 150,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          onPressed: () {
-                            pushTo(context, const ProductDetailsScreen());
-                          },
-                          child: const Text('Buy'),
-                        ),
-                      ],
+                          const SizedBox(height: 8),
+                          const Text(
+                            'The Republic',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(height: 4),
+                          const Text(
+                            '₹285',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(height: 6),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColor.darkColor,
+                              foregroundColor: AppColor.formColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            onPressed: () {
+                              pushTo(context, const ProductDetailsScreen());
+                            },
+                            child: const Text('Buy'),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 }),
@@ -162,11 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
             pushTo(context, const WishListScreen());
           } else if (index == 2) {
             pushTo(context, const CartScreen());
-            //} else if (index == 3) {
-            //  pushTo(context, const ProfileScreen());
-            //}
           }
-          ;
         },
         selectedItemColor: AppColor.darkColor,
         unselectedItemColor: AppColor.grayColor,
