@@ -25,7 +25,7 @@ class DioProvider {
     required String path,
     Object? data,
     Map<String, dynamic>? queryParameters,
-    Map<String, dynamic>? headers,
+    Map<String, dynamic>? headers, required String endpoint,
   }) async {
     return await dio.get(
       path,

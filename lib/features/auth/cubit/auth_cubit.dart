@@ -12,13 +12,13 @@ class AuthCubit extends Cubit<AuthState> {
   var passwordController = TextEditingController();
   var confirmPasswordController = TextEditingController();
 
-  register() async{
+  register() async {
     emit(AuthLoadingState());
     var params = AuthParams(
-      name : nameController.text,
-      email : emailController.text,
-      password : passwordController.text,
-      confirmPassword : confirmPasswordController.text,
+      name: nameController.text,
+      email: emailController.text,
+      password: passwordController.text,
+      confirmPassword: confirmPasswordController.text,
     );
   }
 }

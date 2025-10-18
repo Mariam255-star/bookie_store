@@ -1,4 +1,3 @@
-
 class AuthParams {
   String? name;
   String? email;
