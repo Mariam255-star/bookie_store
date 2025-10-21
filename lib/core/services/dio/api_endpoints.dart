@@ -6,4 +6,9 @@ class ApiEndpoints {
   static const String logout = '/logout';
 
   static const String productBestSeller = '/products-bestseller';
+  static const String sliders = '/sliders';
+
+  static const String wishList = '/wishlist';
+  static const String addToWishlist = '/add-to-wishlist';
+  static const String removeFromWishlist = '/remove-from-wishlist';
 }

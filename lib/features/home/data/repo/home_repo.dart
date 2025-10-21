@@ -4,10 +4,11 @@ import 'package:bookie_store/features/home/data/models/best_seller_response/best
 import 'package:bookie_store/core/services/dio/api_endpoints.dart';
 
 class HomeRepo {
- static Future<BestSellerResponse?> getBestSeller() async {
+  static Future<BestSellerResponse?> getBestSeller() async {
     try {
       var res = await DioProvider.get(
-        endpoint: ApiEndpoints.productBestSeller, path: '',
+        endpoint: ApiEndpoints.productBestSeller,
+        path: '',
       );
       if (res.statusCode == 200) {
         return BestSellerResponse.fromJson(res.data);

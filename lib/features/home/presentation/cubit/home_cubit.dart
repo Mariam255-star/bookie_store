@@ -7,16 +7,15 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
   List<Product> products = [];
-  getBestSeller() async{
-    emit (HomeLoadingState()) ;
+  getBestSeller() async {
+    emit(HomeLoadingState());
     var res = await HomeRepo.getBestSeller();
 
-    if (res !=null){
-      products = res.data?.products ?? [] ;
+    if (res != null) {
+      products = res.data?.products ?? [];
       emit(HomeSuccessState());
-    }else{
+    } else {
       emit(HomeErrorState());
     }
   }
-
 }

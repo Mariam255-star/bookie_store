@@ -2,11 +2,12 @@ import 'package:bookie_store/core/constants/app_color.dart';
 import 'package:bookie_store/core/functions/navigation.dart';
 import 'package:bookie_store/features/home/cart_screen.dart';
 import 'package:bookie_store/features/home/product_details_screen.dart';
-import 'package:bookie_store/features/home/wish_list_screen.dart';
+import 'package:bookie_store/features/home/wihlist/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_slider/carousel_controller.dart' as slider; // 👈 هنا الحل
+import 'package:carousel_slider/carousel_controller.dart'
+    as slider; // 👈 هنا الحل
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
