@@ -74,4 +74,6 @@ class SharedPref {
   static remove(String key) async {
     await pref.remove(key);
   }
+
+  static getUserData() {}
 }
